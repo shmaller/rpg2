@@ -1,0 +1,11 @@
+WeinerMan
+		LEVEL: 1
+		HP:    20/20
+		ATK:   10
+		DEF:   10
+		SPD:   5
+		LCK:   5
+		SNK:   5
+		CHM:   5
+		INT:   5
+		EXP:   0/10

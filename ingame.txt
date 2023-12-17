@@ -1,0 +1,11 @@
+# ARCHERS
+
+# MAGES
+
+# WORLDTEXT
+## CAVE
+It's dark and spooky.
+## KALM
+You encounter a quaint town.
+### SQUARE
+There is a large fountain. People are milling around joyfully.

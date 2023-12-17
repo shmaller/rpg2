@@ -1,0 +1,24 @@
+Location (has population, player can go there)
+	Settlement
+		Town
+			Square
+			Church
+			Tavern
+			Market
+		City
+			Square
+			Church
+			Tavern
+			Soup kitchen
+			Guild hall
+			Market
+		Trading Post
+			Market
+		Fort
+			Cellar
+	Cave
+		Grotto
+		Mine
+	Wood
+		Forest
+		Jungle

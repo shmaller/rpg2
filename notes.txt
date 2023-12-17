@@ -1,0 +1,6 @@
+08/26/2022
+Careers are generated in relation to Hero's level, but all other stats are just based on own level.
+
+	Would like to decouple generation of other class instances from the Hero. The whole world should be able to exist absent the player or the Hero. 
+
+	Perhaps there should just be a wide range of levels, which basically just represent ages. Elders should have a crazy high level but very low stats. I think a better job of defining wide ranges of levels for each Career will solve the Player dependence issue and will force me to be more intentional about the stats for each Career, makes me define more clearly how I imagine the various careers to exist in the game. Perhaps even leveling within Careers, like Novice, Apprentice, Journeyman, Expert, Master.

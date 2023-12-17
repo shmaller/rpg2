@@ -1,8 +1,8 @@
-from bestiary import *
-from careers import *
+from creatures.bestiary import *
+from creatures.people.careers import *
 from mechanics import *
-from location import *
-from daggers import *
+from locations.location import *
+from objects.items.weapons.daggers import *
 
 if __name__ == '__main__':
 

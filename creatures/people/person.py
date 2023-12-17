@@ -166,7 +166,7 @@ opinion, but other is not a Person.')
 
 if __name__ == '__main__':
 
-	from faction import *
+	from factions.faction import *
 
 	Romans = Faction('Romans')
 	Huns = Faction('Huns')

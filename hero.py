@@ -5,7 +5,7 @@ Nick Boni
 This class defines the Hero.
 '''
 
-from person import *
+from creatures.people.person import *
 
 class Hero(Person):
 

@@ -9,4 +9,4 @@ SNK:   5
 CHM:   5
 INT:   5
 EXP:   0/10
-Location: Ran
+Location: Kalm

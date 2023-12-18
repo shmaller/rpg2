@@ -3,6 +3,8 @@ Battle operations:
 - battle
 - take_battle_items
 '''
+from fileops import GAME_OVER
+
 def battle(*arg):
 	'''
 	Enters the battle sequence. 

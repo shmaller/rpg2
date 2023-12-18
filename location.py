@@ -24,7 +24,6 @@ class Location:
 
 	def __init__(
 		self,
-		hero,
 		population,
 		input_name = '',
 		demographics = {},
@@ -52,7 +51,6 @@ class Location:
 		'''
 
 		# try:
-		self.hero = hero
 		self.population = population
 		self.demographics = demographics
 		self.name = self.test_name(input_name)
@@ -77,16 +75,22 @@ class Location:
 #################################################################
 
 	def generate_inhabitants(self):
-		'''No inputs. Given the demographic breakdown of the settlement, 
+		'''
+		No inputs.
+		
+		Given the demographic breakdown of the settlement, 
 		generates a list of instances of the relevant jobs. Sets self.inhabitants
-		property to this list of citizens. Returns list of citizens.'''
-
+		property to this list of citizens. 
+		
+		Returns list of citizens.
+		'''
 		inhabitants = []
 
 		for job in self.demographics:
 			num_people_with_this_job = int(self.demographics[job] * self.population)
+			
 			for i in range(num_people_with_this_job):
-				inhabitants.append(job(self.hero))
+				inhabitants.append(job())
 
 		return inhabitants
 

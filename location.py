@@ -3,7 +3,7 @@ Nick Boni
 7/26/2018
 '''
 
-from creatures.people.careers import *
+from careers import *
 from random import choice
 
 class Location:
@@ -174,7 +174,7 @@ class Settlement(Location):
 if __name__ == '__main__':
 
 	from mechanics import load_file
-	from creatures.bestiary import *
+	from bestiary import *
 	
 	hero = load_file()
 

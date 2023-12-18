@@ -7,7 +7,7 @@ This file defines the Bow class of Weapons in the game.
 
 from weapon import Weapon
 from arrows import *
-from creatures.people.careers import Archer
+from careers import Archer
 
 class Bow(Weapon):
 	def __init__(self):

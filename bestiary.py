@@ -10,7 +10,7 @@ the player will encounter in the game.
 from creature import *
 
 # imports Item, all common items
-from objects.items.common_items import *
+from common_items import *
 
 #################################################################
 

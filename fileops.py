@@ -16,7 +16,7 @@ def load_game_or_new_game():
 	Returns Hero with stats listed in save file.
 	'''
 	import os
-	from creatures.people.hero import Hero
+	from hero import Hero
 
 	if not os.path.exists('save_data.txt'):
 		input('Press Enter to start a new file.')

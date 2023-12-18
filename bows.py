@@ -70,7 +70,7 @@ class Crossbow(Bow):
 
 if __name__ == "__main__":
 
-	from mechanics import load_file
+	from fileops import load_file
 	# from arrows import Stone
 	from bestiary import Goblin
 

@@ -173,7 +173,7 @@ class Settlement(Location):
 
 if __name__ == '__main__':
 
-	from mechanics import load_file
+	from fileops import load_file
 	from bestiary import *
 	
 	hero = load_file()

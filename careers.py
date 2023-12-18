@@ -235,7 +235,7 @@ class Monk(Person):
 
 if __name__ == '__main__':
 
-	from mechanics import load_file
+	from fileops import load_file
 
 	hero = load_file()
 	hero.CHM = 100

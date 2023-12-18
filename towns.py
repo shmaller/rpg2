@@ -4,7 +4,7 @@ Nick Boni
 '''
 
 from location import *
-from creatures.people.careers import *
+from careers import *
 from random import choice
 
 """

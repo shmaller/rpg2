@@ -7,7 +7,7 @@ human characters in the game are based.
 '''
 
 from creature import *
-from mechanics import battle
+from battleops import battle
 
 #################################################################
 #################################################################
@@ -181,7 +181,7 @@ if __name__ == '__main__':
 Hun's opinion of roman: {hun.determine_response(roman)}")
 
 	'''
-	from mechanics import load_file
+	from fileops import load_file
 	from item import Item
 
 	hero = load_file()

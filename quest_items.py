@@ -23,7 +23,7 @@ class Wernicke_Candelabra(Item):
 
 if __name__ == '__main__':
 	from hero import Hero
-	from mechanics import load_file
+	from fileops import load_file
 
 	h = Hero()
 

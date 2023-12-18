@@ -1,6 +1,8 @@
 from bestiary import *
 from careers import *
-from mechanics import *
+from battleops import *
+from fileops import *
+from printops import *
 from location import *
 from daggers import *
 

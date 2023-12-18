@@ -138,7 +138,8 @@ class Warlock(Creature):
 
 #################################################################
 
-from mechanics import battle, load_file
+from battleops import battle
+from fileops import load_file
 
 if __name__ == '__main__':
 

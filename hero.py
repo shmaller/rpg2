@@ -4,13 +4,10 @@ Nick Boni
 
 This class defines the Hero.
 '''
-
-from person import *
+from person import Person
 
 class Hero(Person):
-
 	def __init__(self,name=''):
-
 		super().__init__(name=name)
 		self.player = True
 
@@ -27,7 +24,6 @@ class Hero(Person):
 		
 		Returns None.
 		'''
-
 		self.name = input('What is thy name? ')
 
 		# Prompt the user to select a specialty.
@@ -46,10 +42,6 @@ class Hero(Person):
 		except:
 			print('Thy calling bodes not well for thy time in this world.\n')
 			return self.generate_main_character()
-		
-		#hero = Person(input_name=name, input_player=True) # these three lines are weird
-		#hero.name = name								  # here
-		#hero.player = True  							  # here
 
 		# Strength and perseverance!
 		if specialty == 1:
@@ -77,8 +69,6 @@ class Hero(Person):
 			
 		print('Lo, %s: you begin thus:\n'%self.name)
 		print(self.gen_stats_string())
-
-		return
 
 #################################################################
 

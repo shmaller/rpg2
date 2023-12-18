@@ -5,9 +5,9 @@ Nick Boni
 This file defines the Person class, upon which all
 human characters in the game are based.
 '''
+from random import choice, randint
 
-from creature import *
-from battleops import battle
+from creature import Creature
 
 #################################################################
 #################################################################
@@ -165,8 +165,7 @@ opinion, but other is not a Person.')
 #################################################################
 
 if __name__ == '__main__':
-
-	from faction import *
+	from faction import Faction
 
 	Romans = Faction('Romans')
 	Huns = Faction('Huns')

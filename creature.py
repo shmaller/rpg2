@@ -65,7 +65,8 @@ class Creature:
 		INT=5,
 		name='',
 		player=False,
-		inventory=[]
+		inventory=[],
+		location=''
 		):
 		'''
 		Assigns the following characteristics:
@@ -101,13 +102,7 @@ class Creature:
 		self.name = name
 		self.player = player
 		self.inventory = inventory
-		
-		'''
-		if inventory == None:
-			self.inventory = []
-		else:
-			self.inventory = inventory
-		'''
+		self.location = location
 
 		self.check_attrs()
 
@@ -123,7 +118,6 @@ class Creature:
 
 		Returns None.
 		'''
-
 		from weapon import Weapon
 
 		base_atk = int(self.ATK / 3)
@@ -324,28 +318,17 @@ class Creature:
 		Returns the stat string.
 		'''
 
-		outstr = "\
-		LEVEL: %d\n\
-		HP:    %d/%d\n\
-		ATK:   %d\n\
-		DEF:   %d\n\
-		SPD:   %d\n\
-		LCK:   %d\n\
-		SNK:   %d\n\
-		CHM:   %d\n\
-		INT:   %d\n\
-		EXP:   %d/%d"%(
-			self.LEVEL,
-			self.HP, self.MAXHP,
-			self.ATK,
-			self.DEF,
-			self.SPD,
-			self.LCK,
-			self.SNK,
-			self.CHM,
-			self.INT,
-			self.EXP, self.LEVEL*10
-			)
+		outstr = f'LEVEL: {self.LEVEL}\n'\
+			f'HP:    {self.HP}/{self.MAXHP}\n'\
+			f'ATK:   {self.ATK}\n'\
+			f'DEF:   {self.DEF}\n'\
+			f'SPD:   {self.SPD}\n'\
+			f'LCK:   {self.LCK}\n'\
+			f'SNK:   {self.SNK}\n'\
+			f'CHM:   {self.CHM}\n'\
+			f'INT:   {self.INT}\n'\
+			f'EXP:   {self.EXP}/{self.LEVEL*10}\n'\
+			f'Location: {self.location}'
 		
 		return outstr
 
@@ -492,8 +475,10 @@ if __name__ == '__main__':
 	from item import Item
 
 	i = Item('weiner')
-	hi_chm = Creature(CHM=80)
+	hi_chm = Creature(CHM=80,location='Kalm')
 	lo_chm = Creature(CHM=5)
+
+	print(hi_chm.gen_stats_string())
 
 	print(f'hi chm: {hi_chm.CHM}, lo chm: {lo_chm.CHM}\n \
 	   lo chm - hi chm = {lo_chm.CHM - hi_chm.CHM}\n \
@@ -501,7 +486,7 @@ if __name__ == '__main__':
 		hi chm - lo chm = {hi_chm.CHM - lo_chm.CHM}\n \
 		lo chm resp = {lo_chm.determine_response(hi_chm)}')
 
-	print(hi_chm.determine_response(i))
+	print(hi_chm.determine_response(lo_chm))
 
 	'''	
 	a = Creature(ATK=5)

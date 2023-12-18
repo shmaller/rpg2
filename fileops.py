@@ -56,8 +56,12 @@ def load_game_or_new_game():
 
 def save_file(hero):
 	'''
-	Accepts Hero object as input. Saves Hero's name and
-	stats to the save file. Returns None.
+	Accepts Hero object as input.
+	
+	Saves Hero's name and
+	stats to the save file. 
+	
+	Returns None.
 	'''
 	with open('save_data.txt','w') as f:
 		f.write(hero.name +'\n')
@@ -76,7 +80,7 @@ def load_file():
 
 	Returns Hero object.
 	'''
-	from creatures.people.hero import Hero
+	from hero import Hero
 
 	hero = Hero()
 
@@ -84,30 +88,38 @@ def load_file():
 		hero.name = f.readline().strip()
 
 		for line in f:
-			x = line.strip().split(':')
-			trait = x[0].strip()
+			line_list = line.strip().split(':')
+			trait = line_list[0].strip()
+			value = line_list[1].strip()
 
 			# HP is formatted 'current/max', and we want to
 			# know the current quantity
 			if trait == 'HP':
-				y = x[1].split('/')
-				setattr(hero,'HP',int(y[0]))
-				setattr(hero,'MAXHP',int(y[1]))
+				hp_list = value.split('/')
+				setattr(hero,'HP',int(hp_list[0]))
+				setattr(hero,'MAXHP',int(hp_list[1]))
 				continue				
 
 			elif trait == 'EXP':
-				y = x[1].strip().split('/')
-				setattr(hero,'EXP',int(y[0]))
-				break
+				exp_list = value.split('/')
+				setattr(hero,'EXP',int(exp_list[0]))
+				continue
 
-			value = int(x[1])
+			elif trait == 'Location':
+				setattr(hero,'location',value)
+				continue
+
+			value = int(line_list[1])
 
 			setattr(hero,trait,value)
+	
 
 	print('File loaded: %s\n'%hero.name)
 	print(hero.gen_stats_string())
 
 	return hero
+
+#################################################################
 
 def GAME_OVER():
 	'''No inputs. Prints GAME OVER. The user must choose to load or quit. No return value.'''

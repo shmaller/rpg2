@@ -4,18 +4,16 @@ Nick Boni
 
 This file defines the various human classes in the game.
 '''
+from random import randint
 
-from person import *
+from person import Person
+from battleops import battle
 
 class Peasant(Person):
 	'''Peasants are the lowest, most boring, most generic class of Person.'''
-
 	def __init__(self,name=''):
-
 		super().__init__(name=name)
-
 		self.generate_stats()
-
 		self.name += ' the Peasant'
 
 #################################################################
@@ -24,11 +22,8 @@ class Peasant(Person):
 
 class Archer(Person):
 	'''Archers are fast, lucky, sneaky, and intelligent. They have low DEF.'''
-
 	def __init__(self,name=''):
-
 		super().__init__(name=name)
-
 		self.generate_stats()
 
 		self.ATK = self.LEVEL + randint(5,15)
@@ -45,9 +40,10 @@ class Archer(Person):
 #################################################################
 
 	def chat(self,other):
-		'''Woo an archer, and he or she will teach you
-		how to hide.'''
-
+		'''
+		Woo an archer, and he or she will teach you
+		how to hide.
+		'''
 		response = self.determine_response(other)
 
 		if response <= -30:
@@ -57,13 +53,14 @@ class Archer(Person):
 			print("\n%s: Stay'st thou from my line of sight.\n"%self.name)
 		elif response >= 30:
 			print("\n%s: Thou canst climb my tree.\n"%self.name)
-
 			action = self.test_convo(other,"Wouldst thou woo %s? (y/n) "%self.name)
 
 			if action == 'y':
+				
 				if other.woo(self):
 					input('%s gained 1 SNK!\n'%other.name)
 					other.SNK += 1
+			
 			elif action == 'n':
 				print('\n %s: I shall think of the curve of thine bow.\n'%self.name)
 
@@ -73,11 +70,8 @@ class Archer(Person):
 
 class Wizard(Person):
 	'''Wizards are weak and slow, but lucky, charming, and intelligent.'''
-
 	def __init__(self,name=''):
-
 		super().__init__(name=name)
-
 		self.generate_stats()
 
 		self.DEF = self.LEVEL + randint(-25,-10)
@@ -91,7 +85,6 @@ class Wizard(Person):
 
 	def chat(self,other):
 		'''Woo a wizard and learn a spell!'''
-
 		response = self.determine_response(other)
 
 		if response <= -30:
@@ -116,11 +109,8 @@ class Wizard(Person):
 
 class Elder(Person):
 	'''Elders are very high level, but very weak and slow.'''
-
 	def __init__(self,name=''):
-
 		super().__init__(name=name)
-
 		self.generate_stats()
 
 		self.LEVEL = randint(60,100)
@@ -154,11 +144,8 @@ class Elder(Person):
 class Warrior(Person):
 	'''Warriors are high level, powerful, and defensive,
 	but slow and clumsy.'''
-
 	def __init__(self,name=''):
-
 		super().__init__(name=name)
-
 		self.generate_stats()
 
 		self.LEVEL = randint(30,70)
@@ -172,7 +159,6 @@ class Warrior(Person):
 
 	def chat(self,other):
 		'''Woo a Warrior, and learn of battlefield exploits.'''
-
 		response = self.determine_response(other)
 
 		if response <= -30:
@@ -195,11 +181,8 @@ class Warrior(Person):
 
 class Monk(Person):
 	'''Monks are strong and intelligent.'''
-
 	def __init__(self,name=''):
-		
 		super().__init__(name=name)
-
 		self.generate_stats()
 
 		self.LEVEL = randint(50,90)
@@ -211,7 +194,6 @@ class Monk(Person):
 
 	def chat(self,other):
 		'''Woo a Monk, and learn the secrets of the mind.'''
-
 		response = self.determine_response(other)
 
 		if response <= -30:

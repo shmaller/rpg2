@@ -168,8 +168,9 @@ def print_in_game_text(*args):
 	sequence of keys given in *args.
 
 	Args:
-		*args (any): Sequence of keys in 'in_game_text.json' 
+		*args (strs): Sequence of keys in 'in_game_text.json' 
 			needed to access desired in-game text.
+		E.g.: print_in_game_text('world-text','cave','mouth')
 
 	Returns:
 		None. Prints desired in-game text.

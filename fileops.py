@@ -5,6 +5,12 @@ save_file
 load_file
 GAME_OVER
 '''
+
+import json
+import os
+import sys
+from hero import Hero
+
 def load_game_or_new_game():
 	'''
 	No inputs.
@@ -15,8 +21,6 @@ def load_game_or_new_game():
 
 	Returns Hero with stats listed in save file.
 	'''
-	import os
-	from hero import Hero
 
 	if not os.path.exists('save_data.txt'):
 		input('Press Enter to start a new file.')
@@ -80,8 +84,6 @@ def load_file():
 
 	Returns Hero object.
 	'''
-	from hero import Hero
-
 	hero = Hero()
 
 	with open('save_data.txt') as f:
@@ -139,3 +141,63 @@ def GAME_OVER():
 	else:
 		input('\nThat thou mayest not do.\n')
 		return GAME_OVER()
+
+#################################################################
+
+def get_nested_dict_value(in_dict, *args):
+	"""Navigates a nested dictionary to return a nested value.
+	Used to return in-game text, stored in a complex JSON object.
+
+	Args:
+		in_dict (Dict): Nested dictionary object to parse.
+		*args (any): Ordered sequence of dict keys to return nested value.
+
+	Returns:
+		nested_value (any): The value accessed by in_dict[key_1][key_2]...[key_n]
+	"""	
+	key = args[0]
+	value = in_dict[key]
+
+	if len(args) > 1:
+		return get_nested_dict_value(value, *args[1:])
+	else:
+		return value
+
+def print_in_game_text(*args):
+	"""Prints in-game text from 'in_game_text.json'. Location specified by
+	sequence of keys given in *args.
+
+	Args:
+		*args (any): Sequence of keys in 'in_game_text.json' 
+			needed to access desired in-game text.
+
+	Returns:
+		None. Prints desired in-game text.
+	"""	
+	try:
+		with open('in_game_text.json') as f:
+			text_dict = json.load(f)
+
+		out_text = get_nested_dict_value(text_dict, *args)
+		print(out_text)
+
+	except FileNotFoundError:
+		input("ERROR: Couldn't find in_game_text.json")
+		sys.exit(0)
+	except KeyError:
+		input(f'ERROR: Invalid key path in in-game text: {args}')
+		sys.exit(0)
+	except json.JSONDecodeError:
+		input('ERROR decoding in_game_text.json')
+		sys.exit(0)
+
+	
+if __name__ == '__main__':
+	print_in_game_text('world-text','cave','poop')
+	if input('Delve in? ') == 'y':
+		print_in_game_text('world-text','cave','level-1')
+		if input('Go deeper? ') == 'y':
+			print_in_game_text('world-text','cave','level-2')
+			if input('Seek the source of the light? ') == 'y':
+				print_in_game_text('world-text','cave','level-3')
+				print('\nYou are soothed.')

@@ -1,0 +1,18 @@
+{
+    "world-text": {
+        "cave": {
+            "mouth": "A deep hole which seems to swallow all light. Animals seem to quiet around this hole.",
+            "level-1": "An inky blackness. A low roar.",
+            "level-2": "The darkness seems to be lifting. You hear a trickle far below.",
+            "level-3": "A grotto illuminated by a cool glow."
+        },
+        "meadow": {
+            "rim": "A broad, shining meadow.", 
+            "center": "You're baking in the sun."
+        },
+        "lonely-mountain": {
+            "base": "The mountain rises high above you...",
+            "peak": "All the Earth rolls out before you. Only the eagles have seen this sight."
+        }
+    }
+}

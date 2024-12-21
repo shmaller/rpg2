@@ -27,7 +27,8 @@ class Location:
 		population,
 		input_name = '',
 		demographics = {},
-		generic_class = Peasant
+		generic_class = Peasant,
+		text_dict = {}
 		):
 		'''
 		Generates a list of inhabitants that occupy this Location. An additional property,
@@ -56,6 +57,7 @@ class Location:
 		self.name = self.test_name(input_name)
 		self.stuff_population_with_generic_inhabitants(generic_class)
 		self.inhabitants = self.generate_inhabitants()
+		self.text_dict = text_dict
 
 		"""
 

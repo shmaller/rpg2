@@ -215,6 +215,17 @@ class Monk(Person):
 
 #################################################################
 
+class Priest(Person):
+	def __init__(self, name=''):
+		super().__init__(name=name)
+		self.generate_stats()
+		self.name += ' the Priest'
+
+	def chat(self, other):
+		input(f'{self.name}: Join the church and pay alms.')
+
+#################################################################
+
 if __name__ == '__main__':
 
 	from fileops import load_file

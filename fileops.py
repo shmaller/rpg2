@@ -163,24 +163,24 @@ def get_nested_dict_value(in_dict, *args):
 	else:
 		return value
 
-def print_in_game_text(*args):
-	"""Prints in-game text from 'in_game_text.json'. Location specified by
+def get_in_game_text(*args):
+	"""Gets in-game text from 'in_game_text.json'. Location specified by
 	sequence of keys given in *args.
 
 	Args:
 		*args (strs): Sequence of keys in 'in_game_text.json' 
 			needed to access desired in-game text.
-		E.g.: print_in_game_text('world-text','cave','mouth')
+		E.g.: get_in_game_text('world-text','cave','mouth')
 
 	Returns:
-		None. Prints desired in-game text.
+		out_text (str): Desired in-game-text.
 	"""	
 	try:
 		with open('in_game_text.json') as f:
 			text_dict = json.load(f)
 
 		out_text = get_nested_dict_value(text_dict, *args)
-		print(out_text)
+		return out_text
 
 	except FileNotFoundError:
 		input("ERROR: Couldn't find in_game_text.json")
@@ -188,17 +188,17 @@ def print_in_game_text(*args):
 	except KeyError:
 		input(f'ERROR: Invalid key path in in-game text: {args}')
 		sys.exit(0)
-	except json.JSONDecodeError:
+	'''except json.JSONDecodeError:
 		input('ERROR decoding in_game_text.json')
-		sys.exit(0)
+		sys.exit(0)'''
 
 	
 if __name__ == '__main__':
-	print_in_game_text('world-text','cave','poop')
+	print(get_in_game_text('world-text','cave','poop'))
 	if input('Delve in? ') == 'y':
-		print_in_game_text('world-text','cave','level-1')
+		get_in_game_text('world-text','cave','level-1')
 		if input('Go deeper? ') == 'y':
-			print_in_game_text('world-text','cave','level-2')
+			get_in_game_text('world-text','cave','level-2')
 			if input('Seek the source of the light? ') == 'y':
-				print_in_game_text('world-text','cave','level-3')
+				get_in_game_text('world-text','cave','level-3')
 				print('\nYou are soothed.')

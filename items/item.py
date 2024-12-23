@@ -38,7 +38,7 @@ class Item:
 
 if __name__ == '__main__':
 
-	from hero import Hero
+	from creatures.people.hero import Hero
 	from mechanics import load_file
 
 	hero = load_file()

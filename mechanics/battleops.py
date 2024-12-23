@@ -3,7 +3,7 @@ Battle operations:
 - battle
 - take_battle_items
 '''
-from fileops import GAME_OVER
+import mechanics.fileops as fileops
 
 def battle(*arg):
 	'''
@@ -150,7 +150,7 @@ def battle(*arg):
 				print('%s gained %d EXP.\n'%(combatant.name,exp_points_gained))
 
 				if target.player:
-					return GAME_OVER()
+					return fileops.GAME_OVER()
 
 				# Add the dead combatant's items
 				# to the list of spoils to be collected

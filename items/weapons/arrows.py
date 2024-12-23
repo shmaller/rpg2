@@ -8,7 +8,7 @@ appropriate Arrow is in the user's inventory, the Bow provides
 its Attack Boost. If not, the Bow's Attack Boost is zero.
 '''
 
-from item import Item
+from items.item import Item
 
 #################################################################
 

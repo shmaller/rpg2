@@ -7,10 +7,10 @@ the player will encounter in the game.
 '''
 
 # imports Creature, randint, choice, choices
-from creature import *
+from creatures.creature import *
 
 # imports Item, all common items
-from common_items import *
+from items.common_items import *
 
 #################################################################
 
@@ -138,8 +138,8 @@ class Warlock(Creature):
 
 #################################################################
 
-from battleops import battle
-from fileops import load_file
+from mechanics.battleops import battle
+from mechanics.fileops import load_file
 
 if __name__ == '__main__':
 

@@ -1,13 +1,13 @@
 import random
-import fileops
-import printops
-import person
-import careers
-import location
+import mechanics.fileops as fileops
+import mechanics.printops as printops
+import creatures.people.person as person
+import creatures.people.careers as careers
+import locations.location as location
 
 def main():
     printops.print_title_screen()
-    player = fileops.load_game_or_new_game()
+    player = fileops.load_game_or_new_game('mechanics/save_data.txt')
 
     kalm = location.Location(
         population = random.randint(20,35),
@@ -65,7 +65,7 @@ def main():
 
             response = input('Enter the church? ')
             if response == 'save':
-                fileops.save_file(player)
+                fileops.save_file(player,'mechanics/save_data.txt')
             elif response == 'y':
                 player.location = 'Kalm, church, entrance'
             else:

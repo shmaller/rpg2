@@ -5,7 +5,8 @@ Nick Boni
 This file defines Creatures in the game. It is the
 base class for all living things in the game.
 '''
-from random import randint, choice, choices
+
+import random
 
 #################################################################
 #################################################################
@@ -44,7 +45,7 @@ class Creature:
 		returns a choice from a list of alternate names.'''
 
 		if input_name == '':
-			return choice(list_of_names_to_choose)
+			return random.choice(list_of_names_to_choose)
 		else:
 			return input_name
 
@@ -118,7 +119,7 @@ class Creature:
 
 		Returns None.
 		'''
-		from weapon import Weapon
+		from items.weapons.weapon import Weapon
 
 		base_atk = int(self.ATK / 3)
 		print('base atk factor %d'%base_atk)
@@ -128,7 +129,7 @@ class Creature:
 
 		# The chance of a critical hit is determined by random
 		# chance, plus 1% of my Luck skill.
-		crit_chance = ( randint(0,101) + (self.LCK / 100) )
+		crit_chance = ( random.randint(0,101) + (self.LCK / 100) )
 		critical = False
 
 		# A critical hit triples my base attack!
@@ -139,7 +140,7 @@ class Creature:
 		# The Attack Random Factor introduces chance into the attacking game.
 		# A base attack does 33% of the attack stat. The A.R.F. adds an additional
 		# additive or subtractive factor of 5% of the base attack stat.
-		attack_rand_factor = randint( -int(self.ATK/20), int(self.ATK/20) )
+		attack_rand_factor = random.randint( -int(self.ATK/20), int(self.ATK/20) )
 
 		# Your defense is also taken into account. If my attack is higher than
 		# your defense, I get a boost of half the difference between those stats.
@@ -258,7 +259,7 @@ class Creature:
 		else:
 			# NPCs just choose 3 stats at random to boost.
 			print('\n%s is now level %d.\n'%(self.name,new_level))
-			traits = choices(attr_list,k=3)
+			traits = random.choices(attr_list,k=3)
 
 		for trait in traits:
 			# Boost the focus areas by an extra +2 points.
@@ -386,7 +387,7 @@ response, but other is not a Creature.')
 		print('\n%s: I woo thee, %s!\n'%(self.name,other.name))
 
 		response = self.determine_response(other)
-		luck_factor = randint(0, int(self.LCK))
+		luck_factor = random.randint(0, int(self.LCK))
 
 		if response >= 30:
 			response_factor = 70
@@ -459,7 +460,7 @@ response, but other is not a Creature.')
 		If a Weapon is in the Creature's inventory, return True.
 		'''
 
-		from weapon import Weapon
+		from items.weapons.weapon import Weapon
 
 		for item in self.inventory:
 			if isinstance(item,Weapon):
@@ -472,7 +473,7 @@ response, but other is not a Creature.')
 
 if __name__ == '__main__':
 
-	from item import Item
+	from items.item import Item
 
 	i = Item('weiner')
 	hi_chm = Creature(CHM=80,location='Kalm')

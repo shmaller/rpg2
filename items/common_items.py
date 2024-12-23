@@ -5,7 +5,7 @@ Nick Boni
 This file lays out the common items of the game.
 '''
 
-from item import Item
+from items.item import Item
 
 #################################################################
 

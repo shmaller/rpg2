@@ -1,10 +1,10 @@
-from bestiary import *
-from careers import *
-from battleops import *
-from fileops import *
-from printops import *
-from location import *
-from daggers import *
+from creatures.bestiary import *
+from creatures.people.careers import *
+from mechanics.battleops import *
+from mechanics.fileops import *
+from mechanics.printops import *
+from locations.location import *
+from items.weapons.daggers import *
 
 if __name__ == '__main__':
 

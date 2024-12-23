@@ -5,7 +5,7 @@ Nick Boni
 This file defines all Daggers in the game.
 '''
 
-from weapon import Weapon
+from items.weapons.weapon import Weapon
 
 class Dagger(Weapon):
 	def __init__(self):
@@ -92,7 +92,7 @@ class Jutte(Dagger):
 #################################################################
 
 if __name__ == '__main__':
-	from hero import Hero
+	from creatures.people.hero import Hero
 
 	h = Hero()
 

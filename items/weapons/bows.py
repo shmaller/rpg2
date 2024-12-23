@@ -5,9 +5,9 @@ Nick Boni
 This file defines the Bow class of Weapons in the game.
 '''
 
-from weapon import Weapon
-from arrows import *
-from careers import Archer
+from items.weapons.weapon import Weapon
+from items.weapons.arrows import *
+from creatures.people.careers import Archer
 
 class Bow(Weapon):
 	def __init__(self):
@@ -70,9 +70,9 @@ class Crossbow(Bow):
 
 if __name__ == "__main__":
 
-	from fileops import load_file
+	from mechanics.fileops import load_file
 	# from arrows import Stone
-	from bestiary import Goblin
+	from creatures.bestiary import Goblin
 
 	hero = load_file()
 

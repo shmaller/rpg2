@@ -1,10 +1,10 @@
 from random import choice
 
-from fileops import save_file, load_game_or_new_game
-from printops import print_title_screen
-from person import Person
-from careers import Archer, Warrior, Elder
-from location import Location
+from mechanics.fileops import save_file, load_game_or_new_game
+from mechanics.printops import print_title_screen
+from creatures.people.person import Person
+from creatures.people.careers import Archer, Warrior, Elder
+from locations.location import Location
 
 def main():
     print_title_screen()

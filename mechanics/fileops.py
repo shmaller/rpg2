@@ -9,24 +9,26 @@ GAME_OVER
 import json
 import os
 import sys
-from hero import Hero
+from creatures.people.hero import Hero
 
-def load_game_or_new_game():
+def load_game_or_new_game(save_filepath):
 	'''
-	No inputs.
-
 	Checks to see if a save file exists. If so, prompts user to
 	load the game, or start a new file. If no file exists, creates
 	a new file.
 
-	Returns Hero with stats listed in save file.
+	Args:
+		save_filepath (str): filepath to search for save file.
+
+	Returns:
+		Hero (Hero): Hero object with stats listed in save file.
 	'''
 
-	if not os.path.exists('save_data.txt'):
+	if not os.path.exists(save_filepath):
 		input('Press Enter to start a new file.')
 		hero = Hero()
 		hero.generate_main_character()
-		save_file(hero)
+		save_file(hero,'mechanics')
 		return hero
 	else:
 		print('Wouldst thou like to load a file, or start a new one?\n')
@@ -35,10 +37,10 @@ def load_game_or_new_game():
 
 		if not (load_or_new == 'L' or load_or_new == 'N'):
 			input('\nThat thou mayest not do.\n')
-			return load_game_or_new_game()
+			return load_game_or_new_game(save_filepath)
 
 		if load_or_new == 'L':
-			return load_file()
+			return load_file(save_filepath)
 			
 		elif load_or_new == 'N':
 			print('\nA WARNING TO THOU: starting a new file will overwrite thine old one.\n')
@@ -46,19 +48,28 @@ def load_game_or_new_game():
 
 			if not (sure == 'Y' or sure == 'N'):
 				input('\nThou art not certain.\n')
-				return load_game_or_new_game()
+				return load_game_or_new_game(save_filepath)
 
 			if sure == 'Y':
 				hero = Hero()
 				hero.generate_main_character()
-				save_file(hero)
+				save_file(hero,save_filepath)
 				return hero
 			elif sure == 'N':
 				return load_game_or_new_game()
 
 #################################################################
 
-def save_file(hero):
+def save_file(hero,filepath=''):
+	
+	"""Saves hero's name and stats to file.
+
+	Args:
+		hero (Hero): Player character object.
+		filepath (str, optional): Filepath to save to.
+			Defaults to '' (same directory as calling file).
+	"""	
+
 	'''
 	Accepts Hero object as input.
 	
@@ -67,26 +78,33 @@ def save_file(hero):
 	
 	Returns None.
 	'''
-	with open('save_data.txt','w') as f:
+	if filepath:
+		save_filepath = filepath
+	else:
+		save_filepath = 'save_data.txt'
+
+	with open(save_filepath,'w') as f:
 		f.write(hero.name +'\n')
 		for line in hero.gen_stats_string():
 			f.write(line)
 
 #################################################################
 
-def load_file():
-	'''
-	No inputs.
+def load_file(filepath='save_data.txt'):
+	"""Creates Hero object, populates stats with data from save file,
+	and returns Hero object.
 
-	Creates a Hero object which is 
-	the Hero, reads stats from save file, and populates
-	the Hero's attributes with those stats.
+	Args:
+		filepath (str, optional): Filepath to search for save data. 
+			Defaults to 'save_data.txt' (same directory as calling file).
 
-	Returns Hero object.
-	'''
+	Returns:
+		Hero: Player character Hero object.
+	"""
+
 	hero = Hero()
 
-	with open('save_data.txt') as f:
+	with open(filepath) as f:
 		hero.name = f.readline().strip()
 
 		for line in f:
@@ -116,7 +134,7 @@ def load_file():
 			setattr(hero,trait,value)
 	
 
-	print('File loaded: %s\n'%hero.name)
+	print('\nFile loaded: %s\n'%hero.name)
 	print(hero.gen_stats_string())
 
 	return hero
@@ -176,7 +194,7 @@ def get_in_game_text(*args):
 		out_text (str): Desired in-game-text.
 	"""	
 	try:
-		with open('in_game_text.json') as f:
+		with open('mechanics/in_game_text.json') as f:
 			text_dict = json.load(f)
 
 		out_text = get_nested_dict_value(text_dict, *args)

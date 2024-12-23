@@ -5,12 +5,12 @@ Nick Boni
 This file lays out the base class for all Weapons in the game.
 '''
 
-from item import Item
+from items.item import Item
 
 # imports * from careers, * from person, * from creature,
 # battle and determine_response from mechanics,
 # randint, choice, choices from random
-from careers import *
+from creatures.people.careers import *
 
 class Weapon(Item):
 	'''A Weapon is a type of Item which may boost

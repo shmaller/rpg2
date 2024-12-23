@@ -4,7 +4,8 @@ Nick Boni
 
 This class defines the Hero.
 '''
-from person import Person
+
+from creatures.people.person import Person
 
 class Hero(Person):
 	def __init__(self,name=''):

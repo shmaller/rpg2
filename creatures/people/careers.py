@@ -4,10 +4,9 @@ Nick Boni
 
 This file defines the various human classes in the game.
 '''
-from random import randint
-
-from person import Person
-from battleops import battle
+import random
+from creatures.people.person import Person
+import mechanics.battleops as battleops
 
 class Peasant(Person):
 	'''Peasants are the lowest, most boring, most generic class of Person.'''
@@ -26,12 +25,12 @@ class Archer(Person):
 		super().__init__(name=name)
 		self.generate_stats()
 
-		self.ATK = self.LEVEL + randint(5,15)
-		self.DEF = self.LEVEL + randint(-15,-10)
-		self.SPD = self.LEVEL + randint(5,15)
-		self.LCK = self.LEVEL + randint(5,15)
-		self.SNK = self.LEVEL + randint(5,15)
-		self.INT = self.LEVEL + randint(5,15)
+		self.ATK = self.LEVEL + random.randint(5,15)
+		self.DEF = self.LEVEL + random.randint(-15,-10)
+		self.SPD = self.LEVEL + random.randint(5,15)
+		self.LCK = self.LEVEL + random.randint(5,15)
+		self.SNK = self.LEVEL + random.randint(5,15)
+		self.INT = self.LEVEL + random.randint(5,15)
 
 		self.check_attrs()
 
@@ -48,7 +47,7 @@ class Archer(Person):
 
 		if response <= -30:
 			print(f'\n{self.name}: I\'ll shoot out thine eye! {self.name} holds up two fingers in defiance!')
-			battle(other,self)
+			battleops.battle(other,self)
 		elif abs(response) < 30:
 			print("\n%s: Stay'st thou from my line of sight.\n"%self.name)
 		elif response >= 30:
@@ -74,10 +73,10 @@ class Wizard(Person):
 		super().__init__(name=name)
 		self.generate_stats()
 
-		self.DEF = self.LEVEL + randint(-25,-10)
-		self.SPD = self.LEVEL + randint(-25,-10)
-		self.LCK = self.LEVEL + randint(10,40)
-		self.CHM = self.LEVEL + randint(10,40)
+		self.DEF = self.LEVEL + random.randint(-25,-10)
+		self.SPD = self.LEVEL + random.randint(-25,-10)
+		self.LCK = self.LEVEL + random.randint(10,40)
+		self.CHM = self.LEVEL + random.randint(10,40)
 		self.MP = 10 + (self.LEVEL*2)
 		self.name += ' the Wizard'
 
@@ -89,7 +88,7 @@ class Wizard(Person):
 
 		if response <= -30:
 			input("\n%s: A hex upon thee!"%self.name)
-			battle(other,self)
+			battleops.battle(other,self)
 		elif abs(response) < 30:
 			input("\n%s: I have much studying to do.\n"%self.name)
 		elif response >= 30:
@@ -113,10 +112,10 @@ class Elder(Person):
 		super().__init__(name=name)
 		self.generate_stats()
 
-		self.LEVEL = randint(60,100)
-		self.ATK = self.LEVEL + randint(-50,-20)
-		self.DEF = self.LEVEL + randint(-50,-20)
-		self.SPD = self.LEVEL + randint(-65,-35)
+		self.LEVEL = random.randint(60,100)
+		self.ATK = self.LEVEL + random.randint(-50,-20)
+		self.DEF = self.LEVEL + random.randint(-50,-20)
+		self.SPD = self.LEVEL + random.randint(-65,-35)
 		self.name += ' the Elder'
 
 		self.check_attrs()
@@ -148,11 +147,11 @@ class Warrior(Person):
 		super().__init__(name=name)
 		self.generate_stats()
 
-		self.LEVEL = randint(30,70)
-		self.ATK = self.LEVEL + randint(20,50)
-		self.DEF = self.LEVEL + randint(15,40)
-		self.SPD = self.LEVEL + randint(-15,5)
-		self.SNK = self.LEVEL + randint(-30,-20)
+		self.LEVEL = random.randint(30,70)
+		self.ATK = self.LEVEL + random.randint(20,50)
+		self.DEF = self.LEVEL + random.randint(15,40)
+		self.SPD = self.LEVEL + random.randint(-15,5)
+		self.SNK = self.LEVEL + random.randint(-30,-20)
 		self.name += ' the Warrior'
 
 		self.check_attrs()
@@ -163,7 +162,7 @@ class Warrior(Person):
 
 		if response <= -30:
 			input('\n%s: Foreigner and traitor!'%self.name)
-			battle(other,self)
+			battleops.battle(other,self)
 		elif abs(response) < 30:
 			input('\n%s brushes past thee rapidly.'%self.name)
 		elif response >= 30:
@@ -185,9 +184,9 @@ class Monk(Person):
 		super().__init__(name=name)
 		self.generate_stats()
 
-		self.LEVEL = randint(50,90)
-		self.ATK = self.LEVEL + randint(5,15)
-		self.INT = self.LEVEL + randint(10,30)
+		self.LEVEL = random.randint(50,90)
+		self.ATK = self.LEVEL + random.randint(5,15)
+		self.INT = self.LEVEL + random.randint(10,30)
 		self.name += ' the Monk'
 
 		self.check_attrs()
@@ -228,7 +227,7 @@ class Priest(Person):
 
 if __name__ == '__main__':
 
-	from fileops import load_file
+	from mechanics.fileops import load_file
 
 	hero = load_file()
 	hero.CHM = 100

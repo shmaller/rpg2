@@ -5,7 +5,7 @@ Nicholas Boni
 This file lays out the quest items of the game.
 '''
 
-from item import Item
+from items.item import Item
 
 #################################################################
 
@@ -22,8 +22,8 @@ class Wernicke_Candelabra(Item):
 #################################################################
 
 if __name__ == '__main__':
-	from hero import Hero
-	from fileops import load_file
+	from creatures.people.hero import Hero
+	from mechanics.fileops import load_file
 
 	h = Hero()
 

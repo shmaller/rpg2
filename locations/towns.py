@@ -3,10 +3,9 @@ Nick Boni
 7/26/2018
 '''
 
-from location import *
-from careers import *
-from random import choice
-
+import random
+from src.locations.location import Location
+import src.creatures.people.careers as careers
 """
 class Location:
 	'''A Location is defined simply: it has a population, and you can go there.'''
@@ -116,9 +115,9 @@ class Location:
 
 class Settlement(Location):
 
-	def __init__(self,hero,population,name,demographics,gen_class=Peasant):
+	def __init__(self,hero,population,name,demographics,gen_class=careers.Peasant):
 
-		population = randint(10,30)
+		population = random.randint(10,30)
 		Location.__init__(self,hero,population,name,demographics,gen_class)
 
 		print('name = %s'%self.name)
@@ -148,12 +147,12 @@ class Settlement(Location):
 
 if __name__ == '__main__':
 
-	from fileops import load_file
+	from src.mechanics.fileops import load_file
 	
 	hero = load_file()
 
-	pop = randint(15,36)
-	demo = {Archer: 0.4, Warrior: 0.2, Elder: 0.1}
+	pop = random.randint(15,36)
+	demo = {careers.Archer: 0.4, careers.Warrior: 0.2, careers.Elder: 0.1}
 	name = 'Kalm'
 
 	Kalm = Settlement(hero,pop,name,demo)
@@ -166,7 +165,7 @@ if __name__ == '__main__':
 	# pes.print_info()
 	# print(len(pes.demographics))
 
-	random_citizen = choice(Kalm.inhabitants)
+	random_citizen = random.choice(Kalm.inhabitants)
 	print('Chose: %s'%random_citizen.name)
 
 	random_citizen.chat(hero)

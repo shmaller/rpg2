@@ -5,9 +5,9 @@ Nick Boni
 This file defines the Person class, upon which all
 human characters in the game are based.
 '''
-from random import choice, randint
 
-from creature import Creature
+import random
+from creatures.creature import Creature
 
 #################################################################
 #################################################################
@@ -68,23 +68,23 @@ class Person(Creature):
 'Rosecratz','Guildenstern','Chunk','Blork','Effel','Yorick', 'Puck',
 'Osgood','Rank','Lelel','Bilbo','Kattiwampus']
 
-		self.LEVEL = randint(1,100)
+		self.LEVEL = random.randint(1,100)
 
 		if self.LEVEL <= 0:
 			self.LEVEL = 1
 
-		self.EXP = randint( 0, self.determine_exp()-1 )
-		self.MAXHP = 10 + ( (self.LEVEL-5) * randint(0,3) )
+		self.EXP = random.randint( 0, self.determine_exp()-1 )
+		self.MAXHP = 10 + ( (self.LEVEL-5) * random.randint(0,3) )
 		self.HP = self.MAXHP
-		self.ATK = self.LEVEL + randint(-10,10)
-		self.DEF = self.LEVEL + randint(-10,10)
-		self.SPD = self.LEVEL + randint(-10,10)
-		self.LCK = self.LEVEL + randint(-10,10)
-		self.SNK = self.LEVEL + randint(-10,10)
-		self.CHM = self.LEVEL + randint(-10,10)
-		self.INT = self.LEVEL + randint(-10,10)
+		self.ATK = self.LEVEL + random.randint(-10,10)
+		self.DEF = self.LEVEL + random.randint(-10,10)
+		self.SPD = self.LEVEL + random.randint(-10,10)
+		self.LCK = self.LEVEL + random.randint(-10,10)
+		self.SNK = self.LEVEL + random.randint(-10,10)
+		self.CHM = self.LEVEL + random.randint(-10,10)
+		self.INT = self.LEVEL + random.randint(-10,10)
 		if self.name == '':
-			self.name = choice(names)
+			self.name = random.choice(names)
 
 		# Intelligence is charming!
 		self.CHM += (self.INT / 2)
@@ -146,7 +146,7 @@ opinion, but other is not a Person.')
 		'Inspectum mine rectum.',
 		"I shall cavort for thee! Wait, no, don't run away!"]
 
-		response = '\n%s: '%self.name + choice(responses) + '\n'
+		response = '\n%s: '%self.name + random.choice(responses) + '\n'
 
 		print(response)
 
@@ -165,7 +165,7 @@ opinion, but other is not a Person.')
 #################################################################
 
 if __name__ == '__main__':
-	from faction import Faction
+	from creatures.people.faction import Faction
 
 	Romans = Faction('Romans')
 	Huns = Faction('Huns')

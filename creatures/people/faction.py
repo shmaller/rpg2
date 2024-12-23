@@ -1,4 +1,4 @@
-from person import *
+from creatures.people.person import Person
 
 class Faction:
     '''

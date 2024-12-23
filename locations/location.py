@@ -3,8 +3,8 @@ Nick Boni
 7/26/2018
 '''
 
-from careers import *
-from random import choice
+import random
+import creatures.people.careers as careers
 
 class Location:
 	'''A Location is defined simply: it has a population, and you can go there.'''
@@ -16,7 +16,7 @@ class Location:
 		returns a choice from a list of alternate names.'''
 
 		if input_name == '':
-			return choice(list_of_names_to_choose)
+			return random.choice(list_of_names_to_choose)
 		else:
 			return input_name
 
@@ -27,7 +27,7 @@ class Location:
 		population,
 		input_name = '',
 		demographics = {},
-		generic_class = Peasant,
+		generic_class = careers.Peasant,
 		text_dict = {}
 		):
 		'''
@@ -179,13 +179,13 @@ class Settlement(Location):
 
 if __name__ == '__main__':
 
-	from fileops import load_file
-	from bestiary import *
+	from mechanics.fileops import load_file
+	from creatures.bestiary import *
 	
 	hero = load_file()
 
 	pop = randint(15,36)
-	demo = {Archer: 0.4,Warrior: 0.2, Elder: 0.1}
+	demo = {careers.Archer: 0.4, careers.Warrior: 0.2, careers.Elder: 0.1}
 	name = 'Kalm'
 
 	Kalm = Location(hero,pop,name,demo)
@@ -198,7 +198,7 @@ if __name__ == '__main__':
 	# pes.print_info()
 	# print(len(pes.demographics))
 
-	random_citizen = choice(Kalm.inhabitants)
+	random_citizen = random.choice(Kalm.inhabitants)
 	print('Chose: %s'%random_citizen.name)
 
 	random_citizen.chat(hero)
@@ -210,7 +210,7 @@ if __name__ == '__main__':
 	print('Demographics = ')
 	Balm.print_info()
 
-	random_citizen = choice(Balm.inhabitants)
+	random_citizen = random.choice(Balm.inhabitants)
 	print('Chose: %s'%random_citizen.name)
 
 	random_citizen.chat(hero)

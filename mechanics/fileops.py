@@ -28,7 +28,7 @@ def load_game_or_new_game(save_filepath):
 		input('Press Enter to start a new file.')
 		hero = Hero()
 		hero.generate_main_character()
-		save_file(hero,'mechanics')
+		save_file(hero,'mechanics/save_data.txt')
 		return hero
 	else:
 		print('Wouldst thou like to load a file, or start a new one?\n')
@@ -60,7 +60,7 @@ def load_game_or_new_game(save_filepath):
 
 #################################################################
 
-def save_file(hero,filepath=''):
+def save_file(hero,filepath='save_data.txt'):
 	
 	"""Saves hero's name and stats to file.
 
@@ -68,25 +68,17 @@ def save_file(hero,filepath=''):
 		hero (Hero): Player character object.
 		filepath (str, optional): Filepath to save to.
 			Defaults to '' (same directory as calling file).
-	"""	
+	"""
 
-	'''
-	Accepts Hero object as input.
+	if not os.path.exists(filepath):
+		print(f'Saving new file...')	
 	
-	Saves Hero's name and
-	stats to the save file. 
-	
-	Returns None.
-	'''
-	if filepath:
-		save_filepath = filepath
-	else:
-		save_filepath = 'save_data.txt'
-
-	with open(save_filepath,'w') as f:
+	with open(filepath,'w') as f:
 		f.write(hero.name +'\n')
 		for line in hero.gen_stats_string():
 			f.write(line)
+
+	print('Saved!')
 
 #################################################################
 

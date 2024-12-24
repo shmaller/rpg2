@@ -67,6 +67,9 @@ class Hero(Person):
 		# Hell yeah luck build
 		elif specialty == 4:
 			self.LCK += 45
+
+		# The game starts in the meadow
+		self.location = 'Meadow, center'
 			
 		print('Lo, %s: you begin thus:\n'%self.name)
 		print(self.gen_stats_string())

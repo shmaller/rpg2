@@ -1,0 +1,16 @@
+{
+    "Give Alms": {
+        "name": "Give Alms",
+        "start_loc_name": "Kalm, church, entrance",
+        "characters": {},
+        "items": {},
+        "stages": {
+            "start": "You entered the church at Kalm. Douglass the Priest met you there.",
+            "worship-y": {
+                "alms-y": "You gave alms at the altar. Douglass the Priest thought you wealthy and kind.",
+                "alms-n": "You did not give alms at the altar. Douglass the Priest took pity on your poverty."
+            },                
+            "worship-n": "You did not join the worshippers."
+        }
+    }
+}

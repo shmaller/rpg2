@@ -1,0 +1,13 @@
+{
+    "worship-prompt": "Have you come to worship with us? (y/n) ",
+    "worship-y": "Wonderful. Please join me at the altar.",
+    "worship-n-seek-prompt": "Then, what is it that you seek? (food/shelter/directions/nothing) ",
+    "worship-y-seek-prompt": "What is it that you seek, my child? (food/shelter/directions/nothing) ",
+    "food-worship-y-alms-y": "I'm sorry. We have not the funds to feed those who may feed themselves.",
+    "food-worship-y-alms-n": "You have little by way of earthly goods. Come back tonight for a small meal.",
+    "shelter-worship-y-alms-y": "If you have given what little you had, you may retrieve it for lodging.",
+    "shelter-worship-y-alms-n": "I can offer you a pew.",
+    "directions": "I know little outside of my parish.",
+    "nothing-worship-y": "Return to us soon.",
+    "nothing-worship-n": "May you return to us with an open heart."
+}

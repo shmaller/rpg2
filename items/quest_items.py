@@ -18,6 +18,16 @@ class Wernicke_Candelabra(Item):
 			quest_item=True,
 			description="A delicately-gilt golden candelabra, with shapes of creeping ivy twining the tines. The candleholes are bizarrely narrow - you've never seen a candle narrow enough to fit in these slots."
 			)
+		
+class Coin_for_Alms(Item):
+	def __init__(self):
+		Item.__init__(
+			self,
+			name='Coin',
+			value=1,
+			quest_item=True,
+			description='A forgotten coin.'
+		)
 
 #################################################################
 
@@ -27,10 +37,10 @@ if __name__ == '__main__':
 
 	h = Hero()
 
-	choice = input('Wilt thou take the Candelabra? (y/n) ')
+	choice = input('Wilt thou take the coin? (y/n) ')
 
 	if choice.upper() == 'Y':
-		h.inventory.append(Wernicke_Candelabra())
+		h.inventory.append(Coin_for_Alms())
 	else:
 		print('You fool!')
 

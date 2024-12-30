@@ -16,17 +16,28 @@
         },
         "Kalm": {
             "outskirts": "\nIn the distance, you see a small town with purple roofs, beset with snow.",
-            "square": "\nYou enter the square of the town of Kalm. The spire of a Gothic church\nlooms over the square. Hanging from its point, an auburn banner flaps in the breeze.",
+            "square": "\nYou enter the square of the town of Kalm. The spire of a Gothic church looms over the square.\nHanging from its point, an auburn banner flaps in the breeze.",
             "church": {
                 "entrance": "\nCloudlight filters through the stained glass. It's dim, save for a few candles burning at altars around the room.",
-                "priest-worship-prompt": "\nDouglas the Priest: Have you come to worship with us? (y/n) ",
-                "priest-worship-y": "Wonderful. Please join me at the altar.",
-                "altar": "\nA yellowed cloth covers a simple altar. A candle stands at each end. There is a small dish for alms.",
-                "altar-prompt": "Give alms? (y/n) ",
-                "altar-y": "You drop a coin into the dish.",
-                "altar-n": "Shadows flicker on the coins.",
-                "priest-seek-prompt": "Douglas the Priest: Then, what is it that you seek? (food/shelter/directions/nothing) ",
-                "priest-nothing": "Douglas the Priest: May you return to us with an open heart."
+                "altar": {
+                    "info": "\nA yellowed cloth covers a simple altar. A candle stands at each end. There is a small dish for alms.",
+                    "prompt": "\nGive alms? (y/n) ",
+                    "alms-y": "You drop a coin into the dish.",
+                    "alms-n": "Shadows flicker on the coins."
+                },
+                "douglass": {
+                    "worship-prompt": "\nHave you come to worship with us? (y/n) ",
+                    "worship-y": "Wonderful. Please join me at the altar.",
+                    "seek-prompt": "\nThen, what is it that you seek? (food/shelter/directions/nothing) ",
+                    "food-worship-y-alms-y": "I'm sorry. We have not the funds to feed those who may feed themselves.",
+                    "food-worship-y-alms-n": "You have little by way of earthly goods. Come back tonight for a small meal.",
+                    "shelter-worship-y-alms-y": "If you have given what little you had, you may retrieve it for lodging.",
+                    "shelter-worship-y-alms-n": "I can offer you a pew.",
+                    "directions": "I know little outside of my parish.",
+                    "nothing-worship-y": "Return to us soon.",
+                    "nothing-worship-n": "May you return to us with an open heart."
+                }
+
             }
         }
 

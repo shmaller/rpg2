@@ -10,6 +10,7 @@ import json
 import os
 import sys
 from creatures.people.hero import Hero
+from quests.quest import Quest
 
 def load_game_or_new_game(save_filepath):
 	'''
@@ -211,7 +212,45 @@ def get_in_game_text(filepath, *args):
 		input(f'ERROR decoding {filepath}')
 		sys.exit(0)
 
+###############################################################################
 
+def load_quests(filepath):
+	"""Loads quest data from JSON file. Returns dictionary of quest data.
+
+	Args:
+		filepath (str): Filepath of JSON file containing quest data
+			(currently 'quests/quests.json').
+
+	Returns:
+		Dict: Dictionary object with 
+	"""
+	json_quests = {}
+	quest_objects = {}
+
+	try:
+		with open(filepath) as f:
+			json_quests = json.load(f)
+
+	except FileNotFoundError:
+		input(f"ERROR: Couldn't find JSON file: {filepath}")
+		sys.exit(0)		
+	except json.JSONDecodeError:
+		input(f'ERROR decoding {filepath}')
+		sys.exit(0)
+
+	for json_q in json_quests:
+		json_quest = json_quests[json_q]
+		quest = Quest(
+			json_quest['name'],
+			json_quest['start_loc_name'],
+			json_quest['characters']
+		)
+
+		quest_objects[quest.name] = quest
+
+	return quest_objects
+
+###############################################################################
 	
 if __name__ == '__main__':
 	print(get_in_game_text('world-text','cave','poop'))

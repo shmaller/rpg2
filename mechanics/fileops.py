@@ -181,11 +181,12 @@ def get_nested_dict_value(in_dict, *args):
 	else:
 		return value
 
-def get_in_game_text(*args):
-	"""Gets in-game text from 'in_game_text.json'. Location specified by
+def get_in_game_text(filepath, *args):
+	"""Gets in-game text from a JSON file. Location specified by
 	sequence of keys given in *args.
 
 	Args:
+		filepath (str): Filepath to JSON file to read.
 		*args (strs): Sequence of keys in 'in_game_text.json' 
 			needed to access desired in-game text.
 		E.g.: get_in_game_text('world-text','cave','mouth')
@@ -194,21 +195,22 @@ def get_in_game_text(*args):
 		out_text (str): Desired in-game-text.
 	"""	
 	try:
-		with open('mechanics/in_game_text.json') as f:
+		with open(filepath) as f:
 			text_dict = json.load(f)
 
 		out_text = get_nested_dict_value(text_dict, *args)
 		return out_text
 
 	except FileNotFoundError:
-		input("ERROR: Couldn't find in_game_text.json")
+		input(f"ERROR: Couldn't find JSON file: {filepath}")
 		sys.exit(0)
 	except KeyError:
-		input(f'ERROR: Invalid key path in in-game text: {args}')
+		input(f'ERROR: Invalid key path in {filepath}: {args}')
 		sys.exit(0)
-	'''except json.JSONDecodeError:
-		input('ERROR decoding in_game_text.json')
-		sys.exit(0)'''
+	except json.JSONDecodeError:
+		input(f'ERROR decoding {filepath}')
+		sys.exit(0)
+
 
 	
 if __name__ == '__main__':
